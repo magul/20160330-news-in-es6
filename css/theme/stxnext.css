@@ -20,6 +20,14 @@ body {
   font-weight: normal;
   color: #fff; }
 
+.reveal .important {
+  color:#FD7A58; }
+
+.reveal .code {
+  font-family: monospace;
+  background-color: #3f3f3f;
+  color: #dcdcdc; }
+
 ::selection {
   color: #fff;
   background: #bee4fd;
