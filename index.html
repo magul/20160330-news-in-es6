@@ -91,7 +91,7 @@
 				</section>
 
 				<section>
-					<h2>Symbols primer</h2>
+					<h2>Symbols: Primer</h2>
 					<pre><code class="hljs" data-trim contenteditable>
 let sym = Symbol("meaningful description");
 
@@ -193,9 +193,78 @@ o + 2;
 				</section>
 
 				<section>
-					
+					<h1>In Python</h1>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+def generator():
+	yield 42
+	yield 44
+	return 0
+
+G = generator()
+G.next() # 42
+G.next() # 44
+G.next() # StopIteration: 0
+					</code></pre>
 				</section>
 
+				<section>
+					<section>
+						<h1>In ES5...</h1>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var generator = function () {
+	var a, b, idx = 0, steps = [
+		function (fn) { return 42; },
+		function (fn) { a = fn; return a - 2; },
+		function (fn) { b = 44 - fn; return b; },
+	];
+	return {
+		next: function (from_next) {
+			return {
+				value: steps[idx++](from_next),
+				done: idx >= steps.length,
+			}
+		},
+	};
+};
+						</code></pre>
+					</section>
+					<section>
+						<h1>...In ES5</h1>
+						<pre><code class="hljs" data-trim contenteditable>
+G = generator();
+G.next(); // { value: 42, done: false }
+G.next(44); // { value: 42, done: false }
+G.next(2); // { value: 42, done: true }
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h1>In ES6</h1>
+					<pre><code class="hljs" data-trim contenteditable>
+let generator = function*() {
+	let a = yield 42;
+	let b = 44 - (yield a - 2);
+	return b;
+}
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+G = generator();
+G.next(); // { value: 42, done: false }
+G.next(44); // { value: 42, done: false }
+G.next(2); // { value: 42, done: true }
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Generators: Summary</h2>
+					<ul>
+						<li class="fragment">have You seen <span class="code">*</span>?</li>
+						<li class="fragment">doesn't throw error, when consumed</li>
+						<li class="fragment">return value wrapped in object</li>
+						<li class="fragment"><span class="code">next()</span> accept arguments!</li>
+					</ul>
+				</section>
 			</div>
 
 		</div>
