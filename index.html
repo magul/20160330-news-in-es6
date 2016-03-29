@@ -149,8 +149,8 @@ Object.getOwnPropertySymbols(o); // [ Symbol(symbol) ]
 					<h2>Symbol.iterator</h2>
 					<pre><code class="hljs" data-trim contenteditable>
 let a = [ 1, 2, 3 ];
-for (let i in a) {
-	console.log(a);
+for (let i of a) {
+	console.log(i);
 } // 1 2 3
 					</code></pre>
 					<pre class="fragment"><code class="hljs" data-trim contenteditable>
@@ -161,8 +161,8 @@ a[Symbol.iterator] = function*() {
 	}
 };
 
-for (let i in a) {
-	console.log(a);
+for (let i of a) {
+	console.log(i);
 }
 					</code></pre>
 					<pre class="fragment"><code class="hljs" data-trim contenteditable>
