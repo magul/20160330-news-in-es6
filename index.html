@@ -265,6 +265,143 @@ G.next(2); // { value: 42, done: true }
 						<li class="fragment"><span class="code">next()</span> accept arguments!</li>
 					</ul>
 				</section>
+
+				<section>
+					<h1>Destructing assigments</h1>
+				</section>
+
+				<section>
+					<h2>Destructing assigments: Primer</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+let o = { a: 42, b: 44 };
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+let { a :x, b :y } = o;
+					</code></pre>
+					<h3 class="fragment">WTF?</h3>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+x; // 42
+y; // 44
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+let { a, b } = o;
+a; // 42
+b; // 44
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Default values</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+let o = { a: 42, b: 44 };
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+let { a :x, b :y, c :z } = o;
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+x; // 42
+y; // 44
+z; // undefined
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+let { a :x, b :y, c :z = 21 } = o;
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+x; // 42
+y; // 44
+z; // 21
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Rest operator</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+let o = { a: 42, b: 44, c: 43, d: 21 };
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+let { a :x, ...rest } = o;
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+x; // 42
+rest; // { b: 44, c: 43, d: 21 }
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim contenteditable>
+let a = [ 1, 2, 3, 4, 5, 6 ];
+let [y, z, ...rest] = a;
+y; // 1
+z; // 2
+rest; // [3, 4, 5, 6]
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Spread operator</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+let o = { a: 42, b: 44 };
+let p = { c: 43, ...o };
+p; // { a: 42, b: 44, c: 43 }
+					</code></pre>
+					<pre><code class="hljs" data-trim contenteditable>
+let a = [ 42, 44 ];
+let b = [ ...a, 43 ];
+b; // [ 42, 44, 43 ]
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Destructing assigments: Summary</h2>
+					<ul>
+						<li class="fragment">switch order of symbols when destructing</li>
+						<li class="fragment">get friendly with default values</li>
+						<li class="fragment">remember about <span class="code">...</span></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Support?</h2>
+					<h1 class="fragment">not so good</h1>
+				</section>
+
+				<section>
+					<h2>Solution?</h2>
+					<h1 class="fragment">use transpilers!</h1>
+				</section>
+
+				<section>
+					<h2>What the heck?</h2>
+					<div class="fragment"><img height="300" class="plain" src="assets/babel.png" /></div>
+					<div class="fragment"><img height="150" class="plain" src="assets/traceur.png" /></div>
+				</section>
+
+				<section>
+					<section>
+						<h2>Meet Sebastian</h2>
+						<div class="fragment"><img height="300" class="plain" src="assets/kittens.jpg" /></div>
+						<h3 class="fragment">Sebastian McKenzie</h3>
+						<h3 class="fragment"><a href="https://github.com/kittens">@kittens</a></h3>
+					</section>
+					<section>
+						<h1><span class="code">npm ERR! 404 'left-pad' is not in the npm registry.</span></h1>
+					</section>
+					<section data-background="assets/kittens-website.png">
+					</section>
+					<section>
+						<iframe src="https://www.youtube.com/v/rKuNbEwoQfQ?start=1086&end=1170&version=3" height="600" width="800"></iframe>
+					</section>
+				</section>
+
+				<section>
+					<h1>Questions time</h1>
+				</section>
+
+				<section data-background="#ffffff">
+					<img height="500" class="plain" src="assets/kdp.png" />
+				</section>
+
+				<section>
+					<h1>Tomasz Magulski</h1>
+					<h2><a href="http://magul.ski/news-in-es6">http://magul.ski/news-in-es6</a>
+				</section>
 			</div>
 
 		</div>
